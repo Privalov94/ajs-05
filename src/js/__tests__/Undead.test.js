@@ -1,5 +1,19 @@
 import Undead from '../Undead';
 
+test('check Undead error name', () => {
+  expect(() => {
+    const newUd = new Undead('p', 'Boweman');
+    newUd.name = 'p';
+  }).toThrowError('Длина имени не может быть короче 2 вимволов');
+});
+
+test('check Undead error type', () => {
+  expect(() => {
+    const newUd = new Undead('Gamer', 'Mag');
+    newUd.type = 'Mag';
+  }).toThrowError('Неверный тип игрока');
+});
+
 test('check Undead is created', () => {
   const newUd = new Undead('gamer', 'Zombie');
   expect(newUd).toEqual(
@@ -49,18 +63,4 @@ test('check Undead error levelUp', () => {
     newUd.health = 0;
     newUd.levelUp();
   }).toThrowError('нельзя повысить левел умершего');
-});
-
-test('check Undead error name', () => {
-  expect(() => {
-    const newUd = new Undead('p', 'Boweman');
-    newUd.name = 'p';
-  }).toThrowError('Длина имени не может быть короче 2 вимволов');
-});
-
-test('check Undead error type', () => {
-  expect(() => {
-    const newUd = new Undead('Gamer', 'Mag');
-    newUd.type = 'Mag';
-  }).toThrowError('Неверный тип игрока');
 });

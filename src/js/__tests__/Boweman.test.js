@@ -1,5 +1,19 @@
 import Boweman from '../Boweman';
 
+test('check Boweman error name', () => {
+  expect(() => {
+    const newBw = new Boweman('p', 'Boweman');
+    newBw.name = 'p';
+  }).toThrowError('Длина имени не может быть короче 2 вимволов');
+});
+
+test('check Boweman error type', () => {
+  expect(() => {
+    const newBw = new Boweman('Gamer', 'Mag');
+    newBw.type = 'Mag';
+  }).toThrowError('Неверный тип игрока');
+});
+
 test('check boweman is created', () => {
   const newBw = new Boweman('gamer', 'Zombie');
   expect(newBw).toEqual(
@@ -49,18 +63,4 @@ test('check Boweman error levelUp', () => {
     newBw.health = 0;
     newBw.levelUp();
   }).toThrowError('нельзя повысить левел умершего');
-});
-
-test('check Boweman error name', () => {
-  expect(() => {
-    const newBw = new Boweman('p', 'Boweman');
-    newBw.name = 'p';
-  }).toThrowError('Длина имени не может быть короче 2 вимволов');
-});
-
-test('check Boweman error type', () => {
-  expect(() => {
-    const newBw = new Boweman('Gamer', 'Mag');
-    newBw.type = 'Mag';
-  }).toThrowError('Неверный тип игрока');
 });

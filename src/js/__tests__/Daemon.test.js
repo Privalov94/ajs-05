@@ -1,5 +1,19 @@
 import Daemon from '../Daemon';
 
+test('check Daemon error name', () => {
+  expect(() => {
+    const newDe = new Daemon('p', 'Daemon');
+    newDe.name = 'p';
+  }).toThrowError('Длина имени не может быть короче 2 вимволов');
+});
+
+test('check Daemon error type', () => {
+  expect(() => {
+    const newDe = new Daemon('Gamer', 'Mag');
+    newDe.type = 'Mag';
+  }).toThrowError('Неверный тип игрока');
+});
+
 test('check Daemon is created', () => {
   const newDe = new Daemon('gamer', 'Zombie');
   expect(newDe).toEqual(
@@ -49,18 +63,4 @@ test('check Daemon error levelUp', () => {
     newDe.health = 0;
     newDe.levelUp();
   }).toThrowError('нельзя повысить левел умершего');
-});
-
-test('check Daemon error name', () => {
-  expect(() => {
-    const newDe = new Daemon('p', 'Daemon');
-    newDe.name = 'p';
-  }).toThrowError('Длина имени не может быть короче 2 вимволов');
-});
-
-test('check Daemon error type', () => {
-  expect(() => {
-    const newDe = new Daemon('Gamer', 'Mag');
-    newDe.type = 'Mag';
-  }).toThrowError('Неверный тип игрока');
 });

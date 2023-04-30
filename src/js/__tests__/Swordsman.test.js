@@ -1,5 +1,19 @@
 import Swordsman from '../Swordsman';
 
+test('check Swordsman error name', () => {
+  expect(() => {
+    const newSw = new Swordsman('p', 'Swordsman');
+    newSw.name = 'p';
+  }).toThrowError('Длина имени не может быть короче 2 вимволов');
+});
+
+test('check Swordsman error type', () => {
+  expect(() => {
+    const newSw = new Swordsman('Gamer', 'Mag');
+    newSw.type = 'Mag';
+  }).toThrowError('Неверный тип игрока');
+});
+
 test('check Swordsman is created', () => {
   const newSw = new Swordsman('gamer', 'Zombie');
   expect(newSw).toEqual(
@@ -49,18 +63,4 @@ test('check Swordsman error levelUp', () => {
     newSw.health = 0;
     newSw.levelUp();
   }).toThrowError('нельзя повысить левел умершего');
-});
-
-test('check Swordsman error name', () => {
-  expect(() => {
-    const newSw = new Swordsman('p', 'Swordsman');
-    newSw.name = 'p';
-  }).toThrowError('Длина имени не может быть короче 2 вимволов');
-});
-
-test('check Swordsman error type', () => {
-  expect(() => {
-    const newSw = new Swordsman('Gamer', 'Mag');
-    newSw.type = 'Mag';
-  }).toThrowError('Неверный тип игрока');
 });

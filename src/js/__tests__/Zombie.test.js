@@ -1,5 +1,19 @@
 import Zombie from '../Zombie';
 
+test('check Zombie error name', () => {
+  expect(() => {
+    const newZb = new Zombie('p', 'Zombie');
+    newZb.name = 'p';
+  }).toThrowError('Длина имени не может быть короче 2 вимволов');
+});
+
+test('check Zombie error type', () => {
+  expect(() => {
+    const newZb = new Zombie('Gamer', 'Mag');
+    newZb.type = 'Mag';
+  }).toThrowError('Неверный тип игрока');
+});
+
 test('check Zombie is created', () => {
   const newZb = new Zombie('gamer', 'Zombie');
   expect(newZb).toEqual(
@@ -49,18 +63,4 @@ test('check Zombie error levelUp', () => {
     newZb.health = 0;
     newZb.levelUp();
   }).toThrowError('нельзя повысить левел умершего');
-});
-
-test('check Zombie error name', () => {
-  expect(() => {
-    const newZb = new Zombie('p', 'Zombie');
-    newZb.name = 'p';
-  }).toThrowError('Длина имени не может быть короче 2 вимволов');
-});
-
-test('check Zombie error type', () => {
-  expect(() => {
-    const newZb = new Zombie('Gamer', 'Mag');
-    newZb.type = 'Mag';
-  }).toThrowError('Неверный тип игрока');
 });

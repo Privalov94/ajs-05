@@ -1,5 +1,19 @@
 import Magician from '../Magician';
 
+test('check Magician error name', () => {
+  expect(() => {
+    const newMg = new Magician('p', 'Magician');
+    newMg.name = 'p';
+  }).toThrowError('Длина имени не может быть короче 2 вимволов');
+});
+
+test('check Magician error type', () => {
+  expect(() => {
+    const newMg = new Magician('Gamer', 'Mag');
+    newMg.type = 'Mag';
+  }).toThrowError('Неверный тип игрока');
+});
+
 test('check Magician is created', () => {
   const newMg = new Magician('gamer', 'Zombie');
   expect(newMg).toEqual(
@@ -49,18 +63,4 @@ test('check Magician error levelUp', () => {
     newMg.health = 0;
     newMg.levelUp();
   }).toThrowError('нельзя повысить левел умершего');
-});
-
-test('check Magician error name', () => {
-  expect(() => {
-    const newMg = new Magician('p', 'Magician');
-    newMg.name = 'p';
-  }).toThrowError('Длина имени не может быть короче 2 вимволов');
-});
-
-test('check Magician error type', () => {
-  expect(() => {
-    const newMg = new Magician('Gamer', 'Mag');
-    newMg.type = 'Mag';
-  }).toThrowError('Неверный тип игрока');
 });
